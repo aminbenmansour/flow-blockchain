@@ -10,22 +10,35 @@ pub contract BAYC: NonFungibleToken {
 
   pub resource NFT: NonFungibleToken.INFT {
     pub let id:UInt64
+    pub let name: String
 
     init() {
       self.id = BAYC.totalSupply
+      self.name = "Amine deploys NFT."
       BAYC.totalSupply = BAYC.totalSupply + 1
     }
   }
 
-  pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic {
+  pub resource interface MyCollectionPublic {
+    pub fun deposit(token: @NonFungibleToken.NFT)
+    pub fun getIDs(): [UInt64]
+    pub fun borrowNFT(id: UInt64): &NonFungibleToken.NFT
+    pub fun borrowEntireNFT(id: UInt64): &NFT
+  }
+
+  pub resource Collection: NonFungibleToken.Provider, NonFungibleToken.Receiver, NonFungibleToken.CollectionPublic, MyCollectionPublic {
     pub var ownedNFTs: @{UInt64: NonFungibleToken.NFT}
 
     pub fun deposit(token: @NonFungibleToken.NFT) {
-      self.ownedNFTs[token.id] <-! token
+      let bayc <- token as! @NFT
+      emit Deposit(id: bayc.id, to: self.owner!.address)
+      
+      self.ownedNFTs[bayc.id] <-! bayc
     }
 
     pub fun withdraw(withdrawID: UInt64): @NonFungibleToken.NFT {
       let token <- self.ownedNFTs.remove(key: withdrawID) ?? panic("This collection does not contain an NFT with that ID")
+      emit Withdraw(id: withdrawID, from: self.owner?.address)
       return <- token
     }
 
@@ -37,9 +50,9 @@ pub contract BAYC: NonFungibleToken {
       return (&self.ownedNFTs[id] as &NonFungibleToken.NFT?) ?? panic ("Nothing exists at this index")
     }
 
-    pub fun borrowEntireNFT(id: UInt64): &NFT? {
+    pub fun borrowEntireNFT(id: UInt64): &NFT {
       let refNFT = &self.ownedNFTs[id] as auth &NonFungibleToken.NFT?
-      return refNFT as! &NFT?
+      return refNFT as! &NFT
     }
 
     init() {
@@ -60,6 +73,7 @@ pub contract BAYC: NonFungibleToken {
     pub fun createNFT(): @NFT {
       return <- create NFT()
     }
+    init(){}
   }
 
   init() {
@@ -68,6 +82,4 @@ pub contract BAYC: NonFungibleToken {
 
     self.account.save(<- create NFTMinter(), to: /storage/BAYC)
   }
-
-
 }
