@@ -73,7 +73,17 @@ You can already import certain common contracts we included for you, just make s
 - NFTStorefrontV2 `import "NFTStorefrontV2"`
 - NFTStorefront `import "NFTStorefront"`
 
-
+### Usage
+* generate account
+```bash
+flow accounts create \                                                                                                                                        ─╯
+    --key <PUBLIC_KEY> \
+    --signer testnet-account  --sig-algo <SIGN_ALGO> --hash-algo <HASH_ALGO> --network=testnet
+```
+* export the private key to BASH
+```bash
+export PRIVATE_KEY=$(cat testnet-account.pkey)
+```
 ### Further Reading
 
 - Cadence Language Reference https://developers.flow.com/cadence/language
