@@ -1,4 +1,5 @@
-import NonFungibleToken from 0x01
+import NonFungibleToken from "./NonFungibleToken.cdc"
+
 pub contract BAYC: NonFungibleToken {
 
   pub var totalSupply: UInt64
