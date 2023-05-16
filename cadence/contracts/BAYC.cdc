@@ -1,4 +1,4 @@
-import NonFungibleToken from "./NonFungibleToken.cdc"
+import NonFungibleToken from "./utilities/NonFungibleToken.cdc"
 
 pub contract BAYC: NonFungibleToken {
 

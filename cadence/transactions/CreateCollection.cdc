@@ -1,5 +1,5 @@
-import BAYC from 0x01
-import NonFungibleToken from 0x01
+import BAYC from "../contracts/BAYC.cdc"
+import NonFungibleToken from "../contracts/utilities/NonFungibleToken.cdc"
 
 transaction {
     prepare(acct: AuthAccount) {

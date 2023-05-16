@@ -21,7 +21,8 @@
 		}
 	},
 	"contracts": {
-		"NonFungibleToken": "./cadence/contracts/NonFungibleToken.cdc",
+		"NonFungibleToken": "./cadence/contracts/utilities/NonFungibleToken.cdc",
+		"BAYC": "./cadence/contracts/BAYC.cdc",
 		"FlowToken": {
 			"aliases": {
 				"emulator": "0ae53cb6e3f42a79"
@@ -56,8 +57,7 @@
 			"aliases": {
 				"emulator": "f8d6e0586b0a20c7"
 			}
-		},
-		"BAYC": "./cadence/contracts/BAYC.cdc"
+		}
 	},
 	"deployments": {
 		"testnet": {
