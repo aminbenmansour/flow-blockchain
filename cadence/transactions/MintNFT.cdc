@@ -3,11 +3,6 @@ import MetadataViews from "../contracts/utilities/MetadataViews.cdc"
 import FungibleToken from "../contracts/utilities/FungibleToken.cdc"
 import NonFungibleToken from "../contracts//utilities/NonFungibleToken.cdc"
 
-import BAYC from 0x01
-import NonFungibleToken from 0x01
-import MetadataViews from 0x01
-import FungibleToken from 0x01
-
 /// This script uses the NFTMinter resource to mint a new NFT
 /// It must be run with the account that has the minter resource
 /// stored in /storage/NFTMinter
