@@ -1,4 +1,4 @@
-import FungibleToken from "./utilities/FungibleToken.cdc"
+import FungibleToken from "./FungibleToken.cdc"
 import NonFungibleToken from "./NonFungibleToken.cdc"
 
 /// This contract implements the metadata standard proposed
@@ -112,12 +112,12 @@ pub contract MetadataViews {
         /// This field should be a web-friendly file (i.e JPEG, PNG)
         /// that can be displayed in lists, link previews, etc.
         ///
-        pub let thumbnail: AnyStruct{File}
+        pub let thumbnail: String
 
         init(
             name: String,
             description: String,
-            thumbnail: AnyStruct{File}
+            thumbnail: String
         ) {
             self.name = name
             self.description = description
@@ -737,5 +737,12 @@ pub contract MetadataViews {
         return Traits(traits)
     }
 
-}
+    // also maybe coming soon :)
+    pub struct Identity {
+        pub let uuid: UInt64
+        init(uuid: UInt64) {
+            self.uuid = uuid
+        }
+    }
 
+}

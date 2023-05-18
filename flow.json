@@ -1,68 +1,84 @@
 {
+	"contracts": {
+		"BAYC": "cadence/contracts/BAYC.cdc",
+		"ExampleNFT": {
+			"source": "",
+			"aliases": {
+				"emulator": "f8d6e0586b0a20c7"
+			}
+		},
+		"FUSD": {
+			"source": "",
+			"aliases": {
+				"emulator": "f8d6e0586b0a20c7"
+			}
+		},
+		"FlowToken": {
+			"source": "",
+			"aliases": {
+				"emulator": "0ae53cb6e3f42a79"
+			}
+		},
+		"FungibleToken": "cadence/contracts/utilities/FungibleToken.cdc",
+		"MetadataViews": "cadence/contracts/utilities/MetadataViews.cdc",
+		"NFTStorefront": {
+			"source": "",
+			"aliases": {
+				"emulator": "f8d6e0586b0a20c7"
+			}
+		},
+		"NFTStorefrontV2": {
+			"source": "",
+			"aliases": {
+				"emulator": "f8d6e0586b0a20c7"
+			}
+		},
+		"NonFungibleToken": "cadence/contracts/utilities/NonFungibleToken.cdc"
+	},
 	"networks": {
 		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
 		"testnet": "access.devnet.nodes.onflow.org:9000"
 	},
 	"accounts": {
+		"default": {
+			"address": "01cf0e2f2f715450",
+			"key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
+		},
 		"emulator-account": {
 			"address": "f8d6e0586b0a20c7",
 			"key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
 		},
 		"testnet-account": {
-			"address": "0x29050fe4dddafae1",
+			"address": "29050fe4dddafae1",
 			"key": {
 				"type": "hex",
-				"index": 0,
 				"signatureAlgorithm": "ECDSA_secp256k1",
 				"hashAlgorithm": "SHA2_256",
-				"privateKey": "${PRIVATE_KEY}"
-			}
-		}
-	},
-	"contracts": {
-		"NonFungibleToken": "./cadence/contracts/utilities/NonFungibleToken.cdc",
-		"BAYC": "./cadence/contracts/BAYC.cdc",
-		"FlowToken": {
-			"aliases": {
-				"emulator": "0ae53cb6e3f42a79"
+				"privateKey": "73442146a0ba2a420ff74c093ca597645793cb384a4b9fd7811c8b7776b01d94"
 			}
 		},
-		"FungibleToken": {
-			"aliases": {
-				"emulator": "ee82856bf20e2aa6"
-			}
-		},
-		"FUSD": {
-			"aliases": {
-				"emulator": "f8d6e0586b0a20c7"
-			}
-		},
-		"MetadataViews": {
-			"aliases": {
-				"emulator": "f8d6e0586b0a20c7"
-			}
-		},
-		"ExampleNFT": {
-			"aliases": {
-				"emulator": "f8d6e0586b0a20c7"
-			}
-		},
-		"NFTStorefrontV2": {
-			"aliases": {
-				"emulator": "f8d6e0586b0a20c7"
-			}
-		},
-		"NFTStorefront": {
-			"aliases": {
-				"emulator": "f8d6e0586b0a20c7"
-			}
+		"utilities": {
+			"address": "f3fcd2c1a78f5eee",
+			"key": "6d12eebfef9866c9b6fa92b97c6e705c26a1785b1e7944da701fc545a51d4673"
 		}
 	},
 	"deployments": {
+		"emulator": {
+			"default": [
+				"BAYC"
+			],
+			"utilities": [
+				"FungibleToken",
+				"MetadataViews",
+				"NonFungibleToken"
+			]
+		},
 		"testnet": {
 			"testnet-account": [
 				"NonFungibleToken",
+				"FungibleToken",
+				"MetadataViews",
 				"BAYC"
 			]
 		}
